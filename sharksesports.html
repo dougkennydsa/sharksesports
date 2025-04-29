@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharks Esports Leaderboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #283891 0%, #000 80%);
+  }
+
+  .container {
+    width: 90vw;
+    max-width: 1400px;
+    aspect-ratio: 16/9;
+    background: rgba(20, 20, 20, 0.95);
+    border-radius: 20px;
+    padding: 80px 30px 30px 30px; /* Added top padding for tabs */
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    box-shadow: 0 0 80px rgba(190, 168, 118, 0.3);
+    position: relative;
+  }
+
+  .tabs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.6);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 10;
+  }
+
+  .tab-button {
+    background: #1e1e1e;
+    border: 2px solid #BEA876;
+    color: #BEA876;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .tab-button:hover {
+    background: #BEA876;
+    color: #111;
+    transform: scale(1.05);
+  }
+
+  .profile-section {
+    background: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 0.3s ease;
+  }
+
+  .profile-section:hover {
+    transform: scale(1.03);
+  }
+
+  .player-silhouette {
+    width: 100px;
+    height: 150px;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png') no-repeat center;
+    background-size: cover;
+    border: 3px solid #BEA876;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .player-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #BEA876;
+    margin-bottom: 10px;
+  }
+
+  .badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .badge {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #BEA876, #fff);
+    border-radius: 5px;
+    box-shadow: 0 0 10px #BEA87655;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1828/1828884.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    transition: transform 0.2s ease;
+  }
+
+  .badge:hover {
+    transform: scale(1.2);
+  }
+
+  .leaderboard {
+    background: #141414;
+    border-radius: 15px;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .leaderboard h2 {
+    text-align: center;
+    color: #BEA876;
+    margin-bottom: 20px;
+  }
+
+  .player-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    margin-bottom: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background 0.3s;
+  }
+
+  .player-entry:hover {
+    background: #333;
+  }
+
+  .player-rank {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #BEA876;
+  }
+
+  .player-handle {
+    font-size: 1.1em;
+    color: #fff;
+  }
+
+  .player-score {
+    font-size: 1em;
+    color: #ccc;
+  }
+
+  .construction-banner {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    background: #BEA876;
+    color: #111;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="tabs">
+    <div class="tab-button">Teams</div>
+    <div class="tab-button">Profiles</div>
+    <div class="tab-button">Accolades</div>
+    <div class="tab-button">Stats</div>
+    <div class="tab-button">Matches</div>
+  </div>
+  <div class="profile-section">
+    <div class="player-silhouette"></div>
+    <div class="player-name">Player Name</div>
+    <div class="badge-container">
+      <div class="badge"></div>
+      <div class="badge"></div>
+      <div class="badge"></div>
+    </div>
+  </div>
+  <div class="leaderboard">
+    <h2>Leaderboard</h2>
+    <div class="player-entry"><div class="player-rank">#1</div><div class="player-handle">JustMr.</div><div class="player-score">1540 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#2</div><div class="player-handle">isaΨシ</div><div class="player-score">1505 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#3</div><div class="player-handle">nikki</div><div class="player-score">1470 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#4</div><div class="player-handle">ZERO</div><div class="player-score">1420 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#5</div><div class="player-handle">犯困の阿芯</div><div class="player-score">1400 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#6</div><div class="player-handle">KairiM</div><div class="player-score">1375 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#7</div><div class="player-handle">notabot</div><div class="player-score">1350 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#8</div><div class="player-handle">itsamara</div><div class="player-score">1325 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#9</div><div class="player-handle">nathys.bad</div><div class="player-score">1300 pts</div></div>
+    <div class="player-entry"><div class="player-rank">#10</div><div class="player-handle">valenncorrente</div><div class="player-score">1280 pts</div></div>
+  </div>
+  <div class="construction-banner">Under Construction</div>
+</div>
+</body>
+</html>
